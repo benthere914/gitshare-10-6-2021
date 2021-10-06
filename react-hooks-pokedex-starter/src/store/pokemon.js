@@ -52,7 +52,7 @@ export const createPokemon = (body) => async dispatch => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: {...body}
+    body: JSON.stringify(body)
   });
   console.log(response);
   if (response.ok){
