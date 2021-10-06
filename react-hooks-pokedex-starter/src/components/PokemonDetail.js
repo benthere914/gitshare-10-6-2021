@@ -12,7 +12,9 @@ const PokemonDetail = () => {
   const pokemon = useSelector(state => state.pokemon[pokemonId]);
   const [showEditPokeForm, setShowEditPokeForm] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
+  
   const dispatch = useDispatch()
+
   useEffect(() => {
     setShowEditPokeForm(false);
     setEditItemId(null);
