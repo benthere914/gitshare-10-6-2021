@@ -26,7 +26,7 @@ router.post(
 );
 
 router.put(
-  '/:id',
+  '/:id(\\d+)',
   pokemonValidations.validateUpdate,
   asyncHandler(async function (req, res) {
     const id = await PokemonRepository.update(req.body);
