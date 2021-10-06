@@ -75,6 +75,7 @@ export const editPokemon = (payload) => async dispatch => {
 
 
 
+
 const initialState = {
   list: [],
   types: []
