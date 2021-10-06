@@ -37,7 +37,7 @@ export const getPokemonTypes = () => async dispatch => {
   }
 };
 
-export const getPokemonDetails = (id) => async dispatch => {
+export const getPokemonDetails = id => async dispatch => {
   const response = await fetch(`/api/pokemon/${id}`);
   if (response.ok){
       const pokemon = await response.json();
@@ -45,8 +45,7 @@ export const getPokemonDetails = (id) => async dispatch => {
   }
 }
 
-export const createPokemon = (body) => async dispatch => {
-  console.log(typeof body);
+export const createPokemon = body => async dispatch => {
   const response = await fetch(`/api/pokemon`, {
     method: 'POST',
     headers: {
@@ -54,12 +53,22 @@ export const createPokemon = (body) => async dispatch => {
     },
     body: JSON.stringify(body)
   });
-  console.log(response);
   if (response.ok){
     const data = await response.json();
-    console.log('123', data)
     dispatch(addOnePokemon(data));
   }
+}
+
+export const editPokemon = body => async dispatch => {
+    const response = await fetch(`/api/pokemon/${body.id}`, {
+        method: 'PUT',
+        header: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body)
+    });
+    if (response.ok){
+        const data = await response.json();
+        dispatch(addOnePokemon(data))
+    }
 }
 
 const initialState = {
